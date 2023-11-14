@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="list">
+
+    </div>
+
+
+    <script>
+
+const product = [
+  {
+    id: 1,
+    title: "Hello",
+    thumbnail: "https://drake.vn/image/cache/catalog/Converse/GIA%CC%80Y%202/A04968C/A04968C_1-300x300.jpg",
+    price: 2000000,
+    saleprice: 1800000,
+    type : "CHUCK 1970"
+  },
+  {
+    id: 2,
+    title: "CONVERSE CHUCK 70 NAUTICAL TRI BLOCKED",
+    thumbnail: "https://drake.vn/image/cache/catalog/Converse/GIA%CC%80Y%202/A04969C/A04969C_1-300x300.jpg",
+    price: 2000000,
+    saleprice: 1800000,
+    type : "CHUCK 1970"
+  
+  },
+]
+      const drawProduct = (e) => {
+        let arrayHTML = e.map((item) => {
+        return `
+                <div class="content__product-item col-lg-3">
+                    <img src="${item.thumbnail}" alt="">
+                        <div class="desc">${item.title}</div>
+                        <div class="Drake_Price">${item.price}</div>
+                        <div class="Retail-Price">${item.saleprice}</div>
+                        <button onclick='addToCart(${item.id})' class="addToCart">Add To Card</button>
+             `
+      
+    });
+    document.querySelector(".list").innerHTML = arrayHTML.join('');
+  }
+  drawProduct(product);
+        function addToCart(id){
+            alert('Added to cart');
+        }
+    </script>
+
+</body>
+</html>

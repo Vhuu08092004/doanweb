@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/pagging.css">
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="container">
+        <form class="filter">
+            <div class="item">
+                <label for="">Category</label>
+                <select name="category">
+                    <option value="">---</option>
+                    <option value="Chuck II">Chuck II</option>
+                    <option value="CHUCK 1970">CHUCK 1970</option>
+                    <option value="CLASSIC">CLASSIC</option>
+                </select>
+            </div>
+           
+            <div class="item">
+                <label for="">Name</label>
+                <input type="text" name="name">
+            </div>
+            <div class="item">
+                <label for="">Min Price</label>
+                <input type="number" name="minPrice">
+            </div>
+            <div class="item">
+                <label for="">Max Price</label>
+                <input type="number" name="maxPrice">
+            </div>
+            <div class="item submit">
+                <button>Search</button>
+            </div>
+        </form>
+        <div id="list">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Shopping</h1>
+            <div class="shopping">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="quantity">0</span>
+            </div>
+        </header>
+
+        <div class="list"></div>
+    </div>
+
+    <div class="card">
+        <h1>Card</h1>
+        <ul class="listCard">
+
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+        </div>
+    </div>
+
+    <div class="detail-product">
+       
+    </div>
+    
+   
+    <div class="container">      
+        <div class="content__product" id="products">
+        </div>  
+        <div class="content_pagging">
+                <li class="btn-left fas fa-angle-left " id="btn-left"></li>
+                <div class="number-pages" id="number-pages">
+                  
+                </div>
+                <li class="btn_right fas fa-angle-right" id="btn-right"></li>
+        </div>
+    </div>
+
+
+    <script src="./js/Product.js"></script>
+    <script src="./js/detail.js"></script>
+</body>
+</html>
