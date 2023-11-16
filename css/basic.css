@@ -19,5 +19,5 @@ body{
 }
 
 .col-lg-3{
-    flex: 25%;
+    flex: 25%!important;
 }
