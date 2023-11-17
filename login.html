@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    
   </head>
   <body>
     <!-- from login -->
@@ -34,31 +35,11 @@
       <button class="form-submit">Đăng nhập</button>
     </form>
   </body>
-  <script src="./js/validation.js"></script>
-  <script >
+  <script src="./js/validationsignup.js" ></script>
   
-    document.addEventListener('DOMContentLoaded', function () {
-      // Mong muốn của chúng ta
-      Validator({
-        form: '#form-1',
-        formGroupSelector: '.form-group',
-        errorSelector: '.form-message',
-        rules: [
-          Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-          Validator.isEmail('#email'),
-          Validator.minLength('#password', 6),
-          Validator.isRequired('#password_confirmation'),
-          Validator.isConfirmed('#password_confirmation', function () {
-            return document.querySelector('#form-1 #password').value;
-          }, 'Mật khẩu nhập lại không chính xác')
-        ],
-        onSubmit: function (data) {
-          // Call API
-          console.log(data);
-        }
-      });
-
-
+  <script >
+   document.addEventListener('DOMContentLoaded', function () {
+      
       Validator({
         form: '#form-2',
         formGroupSelector: '.form-group',
@@ -68,11 +49,10 @@
           Validator.minLength('#password', 6),
         ],
         onSubmit: function (data) {
-          // Call API
-          console.log(data);
+          
+          
         }
       });
     });
-
   </script>
 </html>

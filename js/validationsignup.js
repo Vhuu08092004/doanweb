@@ -61,13 +61,12 @@ function Validator(options) {
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
     if (formElement) {
+        let email
         // Khi submit form
-        let fullname ='';
-        let email = '';
-        let password = '';
         formElement.onsubmit = function (e) {
             e.preventDefault();
             var isFormValid = true;
+            inputValues = [];
             // Lặp qua từng rules và validate
             options.rules.forEach(function (rule) {
                 var inputElement = formElement.querySelector(rule.selector);
@@ -82,15 +81,8 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
-                        
-                        switch(input.name){
-                            case 'fullname':
-                                fullname = input.value;
-                                break;
-                            case 'email' :
-                                email = input.value;
-                            case 'password' :
-                                password = input.value;
+                        if( input.name == 'email') {
+                            email = input.value
                         }
                         switch(input.type) {
                             case 'radio':
@@ -111,24 +103,19 @@ function Validator(options) {
                                 break;
                             default:
                                 values[input.name] = input.value;                          
-                                
-                               
+                               inputValues.push(values[input.name])
                         }
 
                         return values;
                     }, {});
                     options.onSubmit(formValues);
-                    const user = {
-                        fullname : fullname ,
-                        email : email ,
-                        password : password,
-                        token : generateToken(),
-                    }
-                    localStorage.setItem(email , JSON.stringify(user))
-                    window.location.href = "login.html";
-                    alert('tạo tài khoản thành công!')
+                   
+                    let data = JSON.parse(localStorage.getItem(email))
+                    if(data) {
+                        alert("đăng nhập thành công")
+                        window.location.href = "index.html";
+                    }  
                 }
-                
                 // Trường hợp submit với hành vi mặc định
                 else {
                     formElement.submit();

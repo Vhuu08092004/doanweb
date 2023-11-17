@@ -46,9 +46,10 @@
       <button class="form-submit">Đăng ký</button>
     </form>
   </body>
-  <script src="./js/validation.js"></script>
-  <script >
   
+  <script src="./js/validation.js" ></script>
+  <script > 
+    
     document.addEventListener('DOMContentLoaded', function () {
       // Mong muốn của chúng ta
       Validator({
@@ -71,19 +72,6 @@
       });
 
 
-      Validator({
-        form: '#form-2',
-        formGroupSelector: '.form-group',
-        errorSelector: '.form-message',
-        rules: [
-          Validator.isEmail('#email'),
-          Validator.minLength('#password', 6),
-        ],
-        onSubmit: function (data) {
-          // Call API
-          console.log(data);
-        }
-      });
     });
 
   </script>
