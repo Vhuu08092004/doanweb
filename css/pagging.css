@@ -1,5 +1,10 @@
 .content_pagging{
     display: flex;
+  
+   justify-content: center;
+   align-items: center;
+   font-size: 25px;
+   margin:15px 0;
 }
 
 .content_pagging li {

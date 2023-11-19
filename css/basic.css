@@ -3,6 +3,7 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: monospace;
+    background-color: #FFEAC04D;
 }
 
 .container {
@@ -17,7 +18,4 @@ body{
     margin-right: -15px;
     margin-left: -15px;
 }
-
-.col-lg-3{
-    flex: 25%!important;
-}
+ 
