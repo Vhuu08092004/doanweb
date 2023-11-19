@@ -1,14 +1,8 @@
-
-function generateToken() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 20;
-    let token = '';
-  
-    for (let i = 0; i < length; i++) {
-      token += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-  
-    return token;
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
   }
 // Đối tượng `Validator`
 function Validator(options) {
@@ -61,7 +55,8 @@ function Validator(options) {
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
     if (formElement) {
-        let email
+        let email;
+        let token;
         // Khi submit form
         formElement.onsubmit = function (e) {
             e.preventDefault();
@@ -83,6 +78,9 @@ function Validator(options) {
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
                         if( input.name == 'email') {
                             email = input.value
+                        }
+                        if(input.name == 'token') {
+                            token = input.value
                         }
                         switch(input.type) {
                             case 'radio':
@@ -111,6 +109,8 @@ function Validator(options) {
                     options.onSubmit(formValues);
                    
                     let data = JSON.parse(localStorage.getItem(email))
+                    
+                    setCookie("token" , data.token , 30);
                     if(data) {
                         alert("đăng nhập thành công")
                         window.location.href = "index.html";

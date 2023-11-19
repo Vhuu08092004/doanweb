@@ -6,6 +6,21 @@
   q: ''
 };
 
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0)===' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) === 0) {
+          return c.substring(name.length,c.length);
+      }
+  }
+  return "";
+}
+
  let category = document.querySelector("#category");
  let buttonRight = document.querySelector("#btn-right");
  let numberPage =document.querySelector("#number-pages"); 
@@ -21,7 +36,7 @@
       list= document.querySelector(".list"),
       listCard = document.querySelector(".listCard"),
       total = document.querySelector(".total"),
-      quantity = document.querySelector(".quantity")
+      quantitys = document.querySelector(".quantity")
 
 const product = [
   {
@@ -236,12 +251,12 @@ const reloadCard = () => {
   listCard.innerHTML = "";
   let count = 0;
   let totalPrice= 0;
-
+  let pays = [];
   listCards.forEach((value, key) => {
       totalPrice = totalPrice + product[key].price * listCards[key].quantity
       count = count + value.quantity;
-      console.log(totalPrice)
       if(value != null) {
+          
           let newDiv = document.createElement("li");
           newDiv.innerHTML = `
               <div><img src = "${value.thumbnail}"></div>
@@ -255,16 +270,23 @@ const reloadCard = () => {
               </div>
           `
           listCard.appendChild(newDiv)
+        pays.push(`<div><img src = "${value.thumbnail}"></div>
+        <div class = "cardTitle">${value.title}</div>
+        <div class = "cardPrice">${product[key].price * listCards[key].quantity}</div>
+        <div class = "count">${value.quantity}</div>`)
       }
+      const condition = getCookie('token');
+      localStorage.setItem(`${condition} + product`,pays)
       total.innerText = totalPrice.toLocaleString();
-      quantity.innerText = count;
+      quantitys.innerText = count;
   })
 }
 
 const changeQuantity = (key, quantity) => {
   if(quantity == 0) {
-      delete listCards[key]
-      total.innerText = 0
+      delete listCards[key];
+      total.innerText = 0;
+      quantitys.innerHTML = 0
   }
   else {
       listCards[key].quantity = quantity;
