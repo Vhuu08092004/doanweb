@@ -222,12 +222,13 @@ let productFilter = product ;
                       <div class="Drake_Price">${item.price}</div>
                       <div class="Retail-Price">${item.saleprice}</div>
                       <button onclick = "addToCard(${index})">Add To Card</button>
-                      <span class="detail" id=${index}>Detail</span>
+                      <span class="detail" onclick="btnDetail(${index})" id=${index}>Detail</span>
                 </div>
               `
       }
     });
     document.getElementById("products").innerHTML = arrayHTML.join('');
+    
   }
 drawProduct(product);
 

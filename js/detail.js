@@ -1,4 +1,4 @@
-const btnDetail = document.querySelectorAll(".detail");
+
 // const detail = document.querySelector(".detail-product");
 
 const products = [
@@ -162,11 +162,8 @@ const products = [
 
 ]
 
-
-for (let i = 0; i < btnDetail.length; i++) {
-    btnDetail[i].addEventListener("click", (e) => {
-        const idProduct = e.srcElement.id
-        console.log(idProduct)
+const btnDetail = key => { 
+    const idProduct = key
         let arrayHTML = products.map((item , index) => {
             if (idProduct == index) {
               return `
@@ -190,6 +187,4 @@ for (let i = 0; i < btnDetail.length; i++) {
 
        
         document.querySelector(".detail-product").innerHTML = arrayHTML.join('');
-    })
-
 }

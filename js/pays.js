@@ -15,7 +15,7 @@
 
 const pay = document.querySelector(".pays");
 const condition = getCookie('token');
-console.log(total.innerHTML)
+
 pay.addEventListener("click", () => {
     let check = getCookie('hBUowWKbil0UDP0eJqH0 + product')
     if (condition) {
