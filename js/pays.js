@@ -21,6 +21,7 @@ pay.addEventListener("click", () => {
     if (condition) {
        listCard.innerHTML = ''
        total.innerHTML = 0
+       quantitys.innerHTML = 0
        alert('thanh toán thành công!')
     } 
      else {

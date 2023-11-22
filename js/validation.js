@@ -61,10 +61,11 @@ function Validator(options) {
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
     if (formElement) {
-        // Khi submit form
         let fullname ='';
         let email = '';
         let password = '';
+        let per = '';
+        // Khi submit form
         formElement.onsubmit = function (e) {
             e.preventDefault();
             var isFormValid = true;
@@ -95,6 +96,7 @@ function Validator(options) {
                         switch(input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                                per = values[input.name];
                                 break;
                             case 'checkbox':
                                 if (!input.matches(':checked')) {
@@ -114,19 +116,25 @@ function Validator(options) {
                                 
                                
                         }
-
-                        return values;
+                        return values;   
                     }, {});
                     options.onSubmit(formValues);
-                    const user = {
-                        fullname : fullname ,
-                        email : email ,
-                        password : password,
-                        token : generateToken(),
+                    let data = localStorage.getItem(email)
+                    if(data) {
+                        alert("Email đã được đăng kí")
+                    } else {
+                        const user = {
+                            fullname : fullname ,
+                            email : email ,
+                            password : password,
+                            token : generateToken(),
+                            per : per
+                        }
+                        localStorage.setItem(email , JSON.stringify(user))
+                        window.location.href = "login.html";
+                        alert('tạo tài khoản thành công!')
                     }
-                    localStorage.setItem(email , JSON.stringify(user))
-                    window.location.href = "login.html";
-                    alert('tạo tài khoản thành công!')
+                    
                 }
                 
                 // Trường hợp submit với hành vi mặc định

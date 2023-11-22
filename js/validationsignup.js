@@ -107,14 +107,16 @@ function Validator(options) {
                         return values;
                     }, {});
                     options.onSubmit(formValues);
-                   
                     let data = JSON.parse(localStorage.getItem(email))
-                    
+                 
                     setCookie("token" , data.token , 30);
-                    if(data) {
+                    if(data && data.per == 'user') {
                         alert("đăng nhập thành công")
                         window.location.href = "index.html";
-                    }  
+                    }  else {
+                        alert("đăng nhập thành công")
+                        window.location.href = "admin.html";
+                    }
                 }
                 // Trường hợp submit với hành vi mặc định
                 else {
