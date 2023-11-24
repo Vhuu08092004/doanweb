@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
+    <title>Quản Lý</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -45,25 +45,32 @@
             <!-- Vertical navbar -->
             <div class="vertical-nav bg-white col-2" id="sidebar">
                 <div class="py-4 px-3 mb-4 bg-light text-center">
-                    <img src="https://icons.veryicon.com/png/o/miscellaneous/yuanql/icon-admin.png" alt="..."
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..."
                         width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                    <h4 class="m-0">Admin</h4>
+                    <h4 class="m-0">Jason Doe</h4>
                     <p class="font-weight-light text-muted mb-0">Web developer</p>
+                    <p class="btn btn-primary font-weight-light btn-sm" id="generate">Generate Data</p>
                 </div>
 
-                <p class="text-gray font-weight-bold text-uppercase px-3 small pb-3 mb-0 ml-1">Management</p>
+                <p class="text-gray font-weight-bold text-uppercase px-3 small pb-3 mb-0 ml-1">Quản Lý</p>
 
                 <ul class="nav flex-column bg-white mb-0 ml-1">
                     <li class="nav-item" id="s_product">
                         <a href="#" class="nav-link text-dark font-italic bg-light">
                             <i class="fa fa-th-large mr-1 text-primary fa-fw"></i>
-                            Product
+                            Sản Phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item" id="s_user">
+                        <a href="#" class="nav-link text-dark font-italic bg-light">
+                            <i class="fa fa-address-card mr-1 text-primary fa-fw"></i>
+                            Khách Hàng
                         </a>
                     </li>
                     <li class="nav-item" id="s_order">
                         <a href="#" class="nav-link text-dark font-italic bg-light">
                             <i class="fa fa-cubes mr-1 text-primary fa-fw"></i>
-                            Order
+                            Đơn Hàng
                         </a>
                     </li>
                 </ul>
@@ -101,11 +108,11 @@
                         <div class="frms container" id="form-id">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="code">ID: </label>
+                                    <label for="id">ID: </label>
                                     <input type="text" class="form-control" id="code" placeholder="Code">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="category">Type: </label>
+                                    <label for="type">Type: </label>
                                     <select class="form-control" id="category">
                                         <option value="0">Kid</option>
                                         <option value="1">CHUCK 1970</option>
@@ -113,8 +120,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="name">Title: </label>
+                                    <label for="title">Title: </label>
                                     <input type="text" class="form-control" id="name" placeholder="Name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="description">Description: </label>
+                                    <input type="text" class="form-control" id="description" placeholder="Description">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -123,23 +134,22 @@
                                     <input type="text" class="form-control" id="price" placeholder="Price">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="price">Sale Price: </label>
-                                    <input type="text" class="form-control" id="price" placeholder="Sale Price">
+                                    <label for="saleprice">Sale Price: </label>
+                                    <input type="text" class="form-control" id="sale-price" placeholder="Price">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="entry">Description: </label>
-                                    <input type="text" class="form-control" id="price" placeholder="Description">
+                                    <label for="entry">Date: </label>
+                                    <input type="date" class="form-control" id="entry" placeholder="Entry">
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="image">Thumbnail: </label>
-                                <input type="text" class="form-control" id="price" placeholder="Image address">
+                                <label for="thumbnail">Thumbnail: </label>
+                                <input type="text" class="form-control" id="thumbnail" placeholder="Thumbnail">
                             </div>
                             <div class="text-center" id="actbutton">
                                 <button type="button" class="btn btn-outline-info btn-sm" id="update"
-                                    style="display: none;">Cập Nhật sản phẩm</button>
-                                <button type="button" class="btn btn-outline-success btn-sm" id="add_new">Thêm sản
-                                    phẩm</button>
+                                    style="display: none;">Update Product</button>
+                                <button type="button" class="btn btn-outline-success btn-sm" id="add_new">Add Product</button>
                             </div>
                         </div>
                     </div>
@@ -147,58 +157,25 @@
                         <!-- Search form -->
                         <div class="d-flex offset-8 col-md-4 mb-3">
                             <input type="text" name="search" id="search" class="search"
-                                placeholder="Nhập Tên Sản Phẩm ...">
+                                placeholder="Name Product ...">
                             <i class="fab fa-searchengin fa-lg"></i>
                         </div>
                         <table class="table table-bordered text-center">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">IMG</th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Sale Price</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">Operate</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Sale Price</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Operate</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Sale Price</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Operate</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Sale Price</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Operate</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Sale Price</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Operate</th>
-                                </tr>
+                                <!-- Insert Data -->
                             </tbody>
                         </table>
                     </div>

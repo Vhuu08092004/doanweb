@@ -21,9 +21,9 @@ let DATABASE = localStorage.getItem('DATABASE') ? JSON.parse(localStorage.getIte
         // Set User Default role ADMIN
         {
             ID: generateUUIDV4(),
-            username: "Đinh Sỹ Hùng",
-            phoneNumber: "01672058923",
-            address: "Hải Châu Đà Nẵng",
+            username: "Lê Minh Vương",
+            phoneNumber: "0336907472",
+            address: "Phường 4, quận 6, TP.HCM",
             email: "admin@gmail.com",
             password: "123",
             role: "Admin"
@@ -46,7 +46,7 @@ generate.addEventListener('click', generateData);
 
 function generateData() {
     // read json file
-    $.getJSON("js/data.json", function (data) {
+    $.getJSON("js/Product.js", function (data) {
         DATABASE.PRODUCTS = data.PRODUCTS;
         localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
         location.reload();
@@ -57,14 +57,12 @@ function generateData() {
 // ========================================= PRODUCT MANAGER ===========================================
 
 // Declare form input
-let code = document.getElementById('code');
-let category = document.getElementById('category');
-let name = document.getElementById('name');
-let material = document.getElementById('material');
+let id = document.getElementById('id');
+let thumbnail = document.getElementById('thumbnail');
+let type = document.getElementById('type');
+let description = document.getElementById('description');
 let price = document.getElementById('price');
-let amount = document.getElementById('amount');
-let entry = document.getElementById('entry');
-let image = document.getElementById("image");
+let saleprice = document.getElementById('saleprice');
 
 // Element Define
 let tbody = document.getElementById('tbody');
@@ -81,9 +79,9 @@ function loadProductManager(PRODUCTS) {
 function renderProduct(product) {
     let contents = `
         <tr>
-            <th scope="row">${product.code}</th>
+            <th scope="row">${product.id}</th>
             <td>
-                <img width="120" height="80" src="images/${product.image}">
+                <img width="120" height="80" src="images/${product.thumbnail}">
             </td>
             <td>${product.productName}</td>
             <td>${product.idcategory === "0" ? "Giày Nam" : product.idcategory === "1" ? "Giày Nữ" : "Phụ Kiện"}</td>
@@ -111,7 +109,7 @@ function actAddProduct() {
         title: title.value,
         thumbnail: thumbnail.value,
         type: type.value,
-        decription: descrtption.value,
+        decription: description.value,
         price: price.value,
         saleprice: saleprice.value
     }
@@ -120,7 +118,7 @@ function actAddProduct() {
         PRODUCTS.push(product);
         localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
         renderProduct(product);
-        notificationAction("Thêm Sản Phẩm Thành Công.", "#12e64b");
+        notificationAction("Completed Add.", "#12e64b");
 
         // Clear Form Input
         let form_id = document.getElementById('form-id');
