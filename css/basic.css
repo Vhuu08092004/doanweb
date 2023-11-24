@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: monospace;
+    background-color: #fefefe;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -18,7 +21,15 @@ body{
     margin-left: -15px;
 }
 
-.col-lg-3{
-    flex: 25%!important;
+button{
+    margin:20px 0;
+    border:1px solid #FFEAC0;
+    padding:10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #F8C052;
+    border-style: transparent;
 }
 
