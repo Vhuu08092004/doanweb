@@ -5,10 +5,7 @@
     border-radius: 20px;
     display: flex;
     padding:10px;
-    
-    
 }
-
 .detail-product-left img {
     width: 300px;
     object-fit: cover;

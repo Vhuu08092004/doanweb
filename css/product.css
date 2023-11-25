@@ -92,10 +92,12 @@ header .shopping span{
 header .menu div:hover{
     color:#F8C052;
 }
+
 /* end header */
-.slider{
-    margin-top:90px;
-    background-color: #000;
+.banner-box{
+    margin:70px 0 20px;
+    text-align: center;   
+    overflow: hidden;
 }
 /* filter */
 .filter{
