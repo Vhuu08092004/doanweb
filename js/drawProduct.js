@@ -37,9 +37,11 @@ function getCookie(cname) {
       listCard = document.querySelector(".listCard"),
       total = document.querySelector(".total"),
       quantitys = document.querySelector(".quantity")
+  let DATABASE = JSON.parse(localStorage.getItem('DATABASE'))
 
-     let product = JSON.parse(localStorage.getItem('product')) 
-
+  let product = DATABASE.PRODUCTS
+     
+    
 
 const totalPages = Math.ceil(product.length / params.perPages) ;
 
@@ -64,7 +66,7 @@ let productFilter = product ;
                       <div class="Drake_Price">${item.price}</div>
                       <div class="Retail-Price">${item.saleprice}</div>
                       <button onclick = "addToCard(${item.id})">Add To Card</button>
-                      <span class="detail" onclick="btnDetail(${item.id})" id=${index}>Detail</span>
+                      <span class="detail" onclick="btnDetail(${item.id})" id=${item.id}>Detail</span>
                 </div>
               `
       }
@@ -87,7 +89,6 @@ const addToCard = key => {
       
   }
   reloadCard()
-  
 }
 
 const reloadCard = () => {
@@ -96,6 +97,14 @@ const reloadCard = () => {
   let totalPrice= 0;
   let pays = [];
   listCards.forEach((value, key) => {
+    let products = {
+                 code: value.id,
+                  productName: value.title,                                    
+                  price: value.price,
+                  image: value.thumbnail,                                    
+                  quantity: value.quantity                                  
+               }     ;
+    
       totalPrice = totalPrice + product[key].price * listCards[key].quantity
       count = count + value.quantity;
       if(value != null) {
@@ -111,15 +120,11 @@ const reloadCard = () => {
                   <div class = "count">${value.quantity}</div>
                   <button style = "background-color:#560bad;" class = "cardButton" onclick = "changeQuantity(${key}, ${value.quantity + 1})">+</button>
               </div>
-          `
+          `                                                                                                           
           listCard.appendChild(newDiv)
-        pays.push(`<div><img src = "${value.thumbnail}"></div>
-        <div class = "cardTitle">${value.title}</div>
-        <div class = "cardPrice">${product[key].price * listCards[key].quantity}</div>
-        <div class = "count">${value.quantity}</div>`)
+        pays.push(products)
       }
-      const condition = getCookie('token');
-      localStorage.setItem(`${condition} + product`,pays)
+      localStorage.setItem(`otherProduct`,JSON.stringify(pays))
       total.innerText = totalPrice.toLocaleString();
       quantitys.innerText = count;
   })

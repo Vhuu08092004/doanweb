@@ -1,7 +1,7 @@
 
 // const detail = document.querySelector(".detail-product");
 
-const detail = JSON.parse(localStorage.getItem('product')); 
+const detail = JSON.parse(localStorage.getItem('DATABASE')).PRODUCTS; 
 
 const btnDetail = key => { 
   let arrayHTML;

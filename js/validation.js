@@ -10,6 +10,16 @@ function generateToken() {
   
     return token;
   }
+  
+let DATABASE = localStorage.getItem('DATABASE') ? JSON.parse(localStorage.getItem('DATABASE')) : {
+    PRODUCTS: [],
+    ACCOUNTS: [
+        // Set User Default role ADMIN    
+    ],
+    ORDERS: []
+  };
+
+  let ACCOUNTS = DATABASE.ACCOUNTS;
 // Đối tượng `Validator`
 function Validator(options) {
     function getParent(element, selector) {
@@ -119,18 +129,32 @@ function Validator(options) {
                         return values;   
                     }, {});
                     options.onSubmit(formValues);
-                    let data = localStorage.getItem(email)
-                    if(data) {
+                    let datas;
+                    let userdata = JSON.parse(localStorage.getItem('DATABASE')).ACCOUNTS;
+                    userdata.forEach(data => {
+                        if(data.email === email) {
+                            datas = email
+                        }
+                    })
+                    if(datas) {
                         alert("Email đã được đăng kí")
                     } else {
+                        // ID: generateUUIDV4(),
+                        // username: "Lê Minh Vương",
+                        // phoneNumber: "0336907472",
+                        // address: "Phường 4, quận 6, TP.HCM",
+                        // email: "admin@gmail.com",
+                        // password: "123",
+                        // role: "Admin"
                         const user = {
-                            fullname : fullname ,
+                            ID : generateToken(),
+                            username : fullname ,
                             email : email ,
                             password : password,
-                            token : generateToken(),
-                            per : per
+                            role : per
                         }
-                        localStorage.setItem(email , JSON.stringify(user))
+                        ACCOUNTS.push(user);
+                        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
                         window.location.href = "login.html";
                         alert('tạo tài khoản thành công!')
                     }

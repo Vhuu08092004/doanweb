@@ -107,12 +107,18 @@ function Validator(options) {
                         return values;
                     }, {});
                     options.onSubmit(formValues);
-                    let data = JSON.parse(localStorage.getItem(email))
-                 
-                    setCookie("token" , data.token , 30);
-                    if(data && data.per == 'user') {
+                    let userdata = JSON.parse(localStorage.getItem('DATABASE')).ACCOUNTS;
+                    let datas
+                    userdata.forEach(data =>{
+                        if(data.email == email){
+                            datas = data
+                        }
+                     })
+                    setCookie("token" , datas.ID , 30);
+                    if(datas && datas.role == 'user') {
                         alert("đăng nhập thành công")
                         window.location.href = "index.html";
+                        setCookie("user",datas.email);
                     }  else {
                         alert("đăng nhập thành công")
                         window.location.href = "admin.html";

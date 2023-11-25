@@ -30,6 +30,7 @@ const Register = () => {
 
 const Logout = () => {
     deleteCookie("token")
+    deleteCookie("user")
     window.location.reload()
 }
 // let data = JSON.parse(localStorage.getItem())
