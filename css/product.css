@@ -1,62 +1,76 @@
-.content__product{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-}
 
-.content__product img:hover{
-    cursor: pointer;
-    opacity: 0.7;
-}
-.content__product-item {
-    position: relative;
-}
 
-.content__product-item .detail{
-    position: absolute;
-    top: 39%;
-    left: 28%;
-    display: none;
-    padding: 10px;
-    height: auto;
+/* header */
+header{
+    position: fixed;
+    top:0;
+    left:30px;
+    right:30px;
+    z-index: 999;
+    height:70px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding:0 30px 0 20px;
+    border-radius: 30px;
     background-color: #fff;
-    
-}
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin-bottom: 20px;
 
-.content__product-item:hover > span{
+}
+header h1{
+    color:#F8C052;
+    font-size: 32px;
+    font-family: 'Raleway', sans-serif;
+}
+header .menu{
+    display: flex;
+    align-items: center;
+    gap:40px;
+    font-size: 18px;
+    font-weight: 600;
+  
+}
+header .menu div{
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+header .account{
+    position: relative;
+   
+}
+header .user::before{
+    content:"";
+    height:45px;
+    position: absolute;
+    left:0;
+    right:0;
+    transform: translateY(-100%);
+}
+header .user{
+    position: absolute;
+   top:45px;
+   left:0;
+   right:0;
+   display: none;
+}
+header .account:hover .user{
     display: block;
 }
-
-
-
-
-
-header{
-    display: grid;
-    grid-template-columns: 1fr 50px;
-    margin-top: 10px;
-}
-
 header .shopping{
     position: relative;
     text-align: right;
 }
 
 header .shopping i{
-    font-size: 3rem;
-    color: #efefef;
+    font-size: 2.5rem;
+    color: #F8C052;
     cursor: pointer;
     transition: all 0.25s ease;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -ms-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
-}
-
-header .shopping i:hover{
-    color: #7842b6;
 }
 
 header .shopping span{
@@ -75,8 +89,6 @@ header .shopping span{
     justify-content: center;
     align-items: center;
 }
-<<<<<<< HEAD
-=======
 header .menu div:hover{
     color:#F8C052;
 }
@@ -104,12 +116,42 @@ header .menu div:hover{
     -o-transition: 0.5s;
     z-index: 200;
    
->>>>>>> 8ccd98456eeb86173f33b817b457f64afdd7eca6
 
+}
+.filter .item{
+    width:100%;
+    padding:10px 20px;
+    margin-bottom: 10px;
 
+}
+.filter .item label{
+    font-size: 17px;
+    font-weight: 500;
+    
+}
+.filter .item input{
+    border: transparent;
+    height:23px;
+}
+.filter .item.submit{
+    text-align: center;
+}
 
-/* ---------------- */
+.opensearch .filter{
 
+   right:calc(100% - 300px);
+}
+
+.filter .closesearch {
+    font-size: 24px;
+    position: absolute;
+    right:0;
+    top:0;   
+    cursor: pointer;
+}
+/* end filter */
+
+/* cart */
 .card{
     position: fixed;
     top: 0;
@@ -123,20 +165,11 @@ header .menu div:hover{
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
+    z-index: 9999;
 }
-
 .active .card{
     left: calc(100% - 500px);
 }
-
-.active .container{
-    transform: translateX(-200px);
-    -webkit-transform: translateX(-200px);
-    -moz-transform: translateX(-200px);
-    -ms-transform: translateX(-200px);
-    -o-transform: translateX(-200px);
-}
-
 .card h1{
     color: #560bad;
     font-weight: 300;
@@ -171,9 +204,6 @@ header .menu div:hover{
     background-color: #1c1f25;
     color: #efefef;
 }
-
-
-
 
 .container .list {
     display: grid;
@@ -246,7 +276,6 @@ header .menu div:hover{
     color: #efefef;
 }
 
-
 /* ---------------------- */
 
 .listCard li{
@@ -290,3 +319,117 @@ header .menu div:hover{
     align-items: center;
     cursor: pointer;
 }
+/* End cart */
+/* product */
+.content__product{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    gap:30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.content__product-item{
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:calc(100% /3 - 60px/3);
+    aspect-ratio: 1/1;
+   
+}
+.content__product-item img{
+    object-fit:cover;
+    width:80%;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.content__product-item:hover > span{
+    display: block;
+}
+.content__product-item .detail{
+    display: none;
+    position: absolute;
+    left:50%;
+    transform: translate(-40px,-40px);
+    padding: 10px;
+    background-color: #F8C05280;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* end product */
+/* history */
+.history {
+  text-align: center;
+  
+} 
+.history p{
+    margin:0 0 10px;
+    color:#666666;
+    font-weight: 600;
+}
+
+/* end history */
+/* footer */
+footer{
+    margin-top:30px;
+    padding:25px 0;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+footer .social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    list-style: none;
+}
+footer .social li{
+    background-color: #fff;
+    width:36px;
+    height:36px;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.social li a i{
+    color:#F8C052
+}
+.social li:hover {
+    background-color:#ffc107;
+}
+.social li:hover a i{
+    color:#fff;
+}
+footer .copy-right::after{
+    content: '';
+    height:1px;
+    width:100%;
+    display: inline-block;
+    background-color:#fff;
+    position: absolute;
+    bottom: 100%;
+}
+footer .copy-right{
+    color:#fff;
+    padding:30px 0 15px 0;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+/* end footer */
