@@ -14,70 +14,91 @@
 </head>
 <body>
 
-    <div class="container">
-        <form class="filter">
-            <div class="item">
-                <label for="">Category</label>
-                <select name="category">
-                    <option value="">---</option>
-                    <option value="Kid">Kid</option>
-                    <option value="Chuck 1970">CHUCK 1970</option>
-                    <option value="Classic">Classic</option>
-                </select>
-            </div>
-           
-            <div class="item">
-                <label for="">Name</label>
-                <input type="text" name="name">
-            </div>
-            <div class="item">
-                <label for="">Min Price</label>
-                <input type="number" name="minPrice">
-            </div>
-            <div class="item">
-                <label for="">Max Price</label>
-                <input type="number" name="maxPrice">
-            </div>
-            <div class="item submit">
-                <button>Search</button>
-            </div>
-        </form>
-        <div id="list">
-
-        </div>
-    </div>
-
+   
+    <!-- header -->
     <div class="container">
         <header>
             <h1>Shopping</h1>
-            <div class="shopping">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span class="quantity">0</span>
+            <div class="menu">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Tìm kiếm</span>
+                </div>
+                <div class="account">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Tài Khoản</span>
+                    <div class="user"></div>
+                </div>
+               
+                <div class="shopping">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="quantity">0</span>
+                </div>
             </div>
-            <div class="user">
-                
-            </div>
+           
+           
         </header>
 
         <div class="list"></div>
     </div>
-
-    <div class="card">
-        <h1>Card</h1>
-        <ul class="listCard">
-
-        </ul>
-        <div class="checkOut">
-            <div class="pays">Thanh toán</div>
-            <div class="total">0</div>
-            <div class="closeShopping">Close</div>
-        </div>
+    <div class="slider">
+        
     </div>
+ <!-- end header -->
+ <!-- search -->
+        <div class="container">
+            <form class="filter">
+                <span class="closesearch"><i class="fa-solid fa-xmark"></i></span>
+                <div class="item">
+                    <label for="">Category</label>
+                    <select name="category">
+                        <option value="">---</option>
+                        <option value="Kid">Kid</option>
+                        <option value="Chuck 1970">CHUCK 1970</option>
+                        <option value="Classic">Classic</option>
+                    </select>
+                </div>
+            
+                <div class="item">
+                    <label for="">Name</label>
+                    <input type="text" name="name" placeholder="Từ khóa n">
+                </div>
+                <div class="item">
+                    <label for="">Min Price</label>
+                    <input type="number" name="minPrice">
+                </div>
+                <div class="item">
+                    <label for="">Max Price</label>
+                    <input type="number" name="maxPrice">
+                </div>
+                <div class="item submit">
+                    <button>Search</button>
+                </div>
+                
+            </form>
+            <div id="list">
+
+            </div>
+        </div>
+ <!-- end search -->
+ <!-- card -->
+        <div class="card">
+            <h1>Card</h1>
+            <ul class="listCard">
+
+            </ul>
+            <div class="checkOut">
+                <div class="pays">Thanh toán</div>
+                <div class="total">0</div>
+                <div class="closeShopping">Close</div>
+            </div>
+        </div>
+ <!-- end card -->
+   
 
     <div class="detail-product">
        
     </div>
-    
    
     <div class="container">      
         <div class="content__product" id="products">
@@ -89,8 +110,80 @@
                 </div>
                 <li class="btn_right fas fa-angle-right" id="btn-right"></li>
         </div>
+        <hr>
     </div>
+    <!-- history -->
+    <div class="container">
+        <div class="history">
+            <p style="text-align: center;"><img src="https://drake.vn/image/catalog/Other/hinh-mo-ta-ngan/banner-nho-danh-muc-converse-1.jpg" alt=""></p>
+            <h3>    
+                    Giày Converse chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành “Thương hiệu giày thể thao được giới trẻ yêu thích”
+            </h3>
+            <p style="text-align: start;">
+                Maquis M. Converse được xem là cha đẻ của dòng giày Converse. Có một chi tiết khá hay ho là đến năm 47 tuổi ông mới bắt đầu sáng lập nên Converse do thời niên thiếu của ông gắn liền với một nhà máy đóng giày khác ở địa phương, cũng chính nhờ những kinh nghiệm quý báo hơn 30 năm gắn bó, Maquis đã nảy ra trong đầu một hướng đi riêng cho cuộc đời mình.
+            </p>
+            <p>
+                <img src="./img/lich-su-phat-trien-converse-7.jpg" alt="">
+            </p>
+            <p><em>Maquis M. Converse (1861-1931)</em></p>
+            <p>
+                <img src="./img/lich-su-phat-trien-converse-18.jpg" alt="">
+            </p>
+            <p  style="text-align: start;">Những năm 1920, Charles H. "Chuck" Taylor tham gia vào đội ngũ nhân viên của Converse và trở thành người có nhiều ảnh hưởng nhất trong lịch sử Converse. Năm 1932, chữ ký Chuck Taylor được thêm vào patch logo để ghi nhận những cống hiến của ông</p>
+            <p><img src="./img/lich-su-phat-trien-converse-14.png" alt=""></p>
+            <p  style="text-align: start;">Tính đến thời điểm hiện tại Chuck vẫn luôn là đôi giày tuyệt vời nhất đáp ứng đầy đủ những yêu cầu về mặt chất lượng, tính thời trang cùng sự tiện ích và hơn hết cũng chính lối thiết kế đã tạo tiền đề cho những collection ấn tượng khác được ra đời. Hiện nay Converse đã cho ra mắt nhiều dòng sản phẩm với nhiều thiết kế và cải tiến giúp các tín đồ yêu thích sneaker có thêm cho mình nhiều sự lựa chọn: giày Converse cổ thấp, giày Converse cổ cao, giày Converse Mule, ...</p>
+            <p><img src="./img/lich-su-phat-trien-converse-24.jpg" alt=""></p>
+            <p>
+                <em>Converse Classic</em>
+            </p>
+            <p><img src="./img/lich-su-phat-trien-converse-21.jpg" alt=""></p>
+            <p><em>Converse Chuck 1970S</em></p>
+            <p  style="text-align: start;">Nếu bạn yêu thích Converse và mong muốn sở hữu một thiết kế đẹp mắt, chất lượng. Hãy liên hệ ngay với Drake VN – hệ thống chuyên phân phối giày Converse chính hãng trên toàn Việt Nam với nhiều sản phẩm luôn được cập nhật liên tục</p>
+        </div>
 
+<<<<<<< HEAD
+=======
+    </div>
+    <!-- end history -->
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <ul class="social">
+                <li>
+                 <a href="#">
+                     <i class="fa-brands fa-facebook-f"></i>
+                 </a>
+                </li>
+                <li>
+                 <a href="#">
+                     <i class="fa-brands fa-twitter"></i>
+                 </a>
+                </li>
+                <li>
+                 <a href="#">
+                     <i class="fa-brands fa-linkedin-in"></i>
+                 </a>
+                </li>
+                <li>
+                 <a href="#">
+                     <i class="fa-solid fa-rss"></i>
+                 </a>
+                </li>
+                <li>
+                 <a href="#">
+                     <i class="fa-brands fa-dribbble"></i>
+                 </a>
+                </li>
+             </ul>
+            <div class="copy-right">
+                ©DRAKE VN - All Rights Reserved. Thiết kế web bởi WEBICO.VN
+            </div>    
+        </div>
+          
+    </footer>
+     <!-- end footer -->
+    <script src="./js/product.js"></script>
+>>>>>>> 3882c6319ff5c266f5f99655347751dd2ea0f19e
     <script  src="./js/user.js"></script>
     <script src="./js/drawProduct.js"></script>
     <script src="./js/detail.js"></script>
