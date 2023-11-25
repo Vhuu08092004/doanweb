@@ -1,9 +1,5 @@
 .content_pagging{
     display: flex;
-    font-size: 22px;
-    align-items: center;
-    justify-content: center;
-    margin:16px 0 24px 0;
 }
 
 .content_pagging li {
