@@ -75,6 +75,36 @@ header .shopping span{
     justify-content: center;
     align-items: center;
 }
+<<<<<<< HEAD
+=======
+header .menu div:hover{
+    color:#F8C052;
+}
+
+/* end header */
+.banner-box{
+    margin:70px 0 20px;
+    text-align: center;   
+    overflow: hidden;
+}
+/* filter */
+.filter{
+    position: fixed;
+    top: 100px;
+    right: 100%; 
+    width:300px;
+    height: 60vh;
+    background-color: #dadada;
+    border: 1px solid #7842b6;
+    border-left:transparent;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    z-index: 200;
+   
+>>>>>>> 8ccd98456eeb86173f33b817b457f64afdd7eca6
 
 
 

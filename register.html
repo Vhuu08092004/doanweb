@@ -44,15 +44,18 @@
       </div>
 
       <div class="from-group">
-        <label  for="password_confirmation" class="form-label">Quyền</label>
-        <div>
-          <input name="permission" type="radio" value="user" checked class="form-control ">
-          user
+        <div class="access">
+          <label  for="password_confirmation" class="form-label">Quyền</label>
+          <div>
+            <input name="permission" type="radio" value="user" checked class="form-control ">
+            <span>user</span>
+          </div>
+          <div>
+            <input name="permission" type="radio" value="admin" class="form-control">
+            <span>admin</span>
+          </div>
         </div>
-        <div>
-          <input name="permission" type="radio" value="admin" class="form-control">
-          admin
-        </div>
+       
       </div>
 
       <button class="form-submit">Đăng ký</button>

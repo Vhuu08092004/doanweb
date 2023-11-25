@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+.detail-innerwrap{
+    width:95%;
+    margin: 0 auto 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 20px;
+    display: flex;
+    padding:10px;
+}
+>>>>>>> 8ccd98456eeb86173f33b817b457f64afdd7eca6
 .detail-product-left img {
     width: 400px;
     object-fit: cover;
