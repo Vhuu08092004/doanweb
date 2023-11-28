@@ -1,25 +1,9 @@
-
-function generateToken() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 20;
-    let token = '';
-  
-    for (let i = 0; i < length; i++) {
-      token += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-  
-    return token;
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
   }
-  
-let DATABASE = localStorage.getItem('DATABASE') ? JSON.parse(localStorage.getItem('DATABASE')) : {
-    PRODUCTS: [],
-    ACCOUNTS: [
-        // Set User Default role ADMIN    
-    ],
-    ORDERS: []
-  };
-
-  let ACCOUNTS = DATABASE.ACCOUNTS;
 // Đối tượng `Validator`
 function Validator(options) {
     function getParent(element, selector) {
@@ -71,14 +55,14 @@ function Validator(options) {
     // Lấy element của form cần validate
     var formElement = document.querySelector(options.form);
     if (formElement) {
-        let fullname ='';
-        let email = '';
-        let password = '';
-        let per = '';
+        let email;
+        let token;
+        let password;
         // Khi submit form
         formElement.onsubmit = function (e) {
             e.preventDefault();
             var isFormValid = true;
+            inputValues = [];
             // Lặp qua từng rules và validate
             options.rules.forEach(function (rule) {
                 var inputElement = formElement.querySelector(rule.selector);
@@ -93,20 +77,18 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
-                        
-                        switch(input.name){
-                            case 'fullname':
-                                fullname = input.value;
-                                break;
-                            case 'email' :
-                                email = input.value;
-                            case 'password' :
-                                password = input.value;
+                        if( input.name == 'email') {
+                            email = input.value
+                        }
+                        if(input.name == 'token') {
+                            token = input.value
+                        }
+                        if(input.name == 'password') {
+                            password = input.value 
                         }
                         switch(input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
-                                per = values[input.name];
                                 break;
                             case 'checkbox':
                                 if (!input.matches(':checked')) {
@@ -123,44 +105,34 @@ function Validator(options) {
                                 break;
                             default:
                                 values[input.name] = input.value;                          
-                                
-                               
+                               inputValues.push(values[input.name])
                         }
-                        return values;   
+
+                        return values;
                     }, {});
                     options.onSubmit(formValues);
-                    let datas;
                     let userdata = JSON.parse(localStorage.getItem('DATABASE')).ACCOUNTS;
-                    userdata.forEach(data => {
-                        if(data.email === email) {
-                            datas = email
+                    let datas
+                    userdata.forEach(data =>{
+                        if(data.email == email){
+                            datas = data
                         }
-                    })
-                    if(datas) {
-                        alert("Email đã được đăng kí")
-                    } else {
-                        // ID: generateUUIDV4(),
-                        // username: "Lê Minh Vương",
-                        // phoneNumber: "0336907472",
-                        // address: "Phường 4, quận 6, TP.HCM",
-                        // email: "admin@gmail.com",
-                        // password: "123",
-                        // role: "Admin"
-                        const user = {
-                            ID : generateToken(),
-                            username : fullname ,
-                            email : email ,
-                            password : password,
-                            role : per
-                        }
-                        ACCOUNTS.push(user);
-                        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
-                        window.location.href = "login.html";
-                        alert('tạo tài khoản thành công!')
-                    }
+                       
+                     })
+                     
+                    setCookie("token" , datas.ID , 30);
+                    if(datas && datas.role == 'user' && datas.password == password) {
+                        
+                        alert("đăng nhập thành công")
+                        window.location.href = "index.html";
+                        setCookie("user",datas.email);
+                    }  
                     
+                    if(datas && datas.role == 'admin' && datas.password == password){
+                        alert("đăng nhập thành công")
+                        window.location.href = "admin.html";
+                    }
                 }
-                
                 // Trường hợp submit với hành vi mặc định
                 else {
                     formElement.submit();
@@ -240,4 +212,3 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
         }
     }
 }
-
