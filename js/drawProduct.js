@@ -189,7 +189,6 @@ filter.addEventListener("submit", function (event) {
     return true;
   });
   drawProduct(productFilter);
-  location.reload();
 });
 
 if (productFilter.length > 6) {
