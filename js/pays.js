@@ -60,23 +60,12 @@ let database= JSON.parse(localStorage.getItem('DATABASE')).ACCOUNTS;
                         }
                     })
 
-//     if (validateForm()) {
-//         ORDERS.push(order);
-//         localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
-//         alert('Đặt hàng thành công !');
-//         SESSION.products = [];
-//         sessionStorage.setItem('SESSION', JSON.stringify(SESSION));
-//         location.reload();
-//     }
-
-//     order_btn.disabled = false;
-// }
 
 pay.addEventListener("click", () => {
     if (condition) {
         ORDERS.push(order);
-        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
         localStorage.setItem(`otherProduct`,[])
+        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
        listCard.innerHTML = ''
        total.innerHTML = 0
        quantitys.innerHTML = 0
