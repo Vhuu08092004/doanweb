@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 .detail-innerwrap{
     width:95%;
     margin: 0 auto 20px;
@@ -8,9 +6,25 @@
     display: flex;
     padding:10px;
 }
->>>>>>> 8ccd98456eeb86173f33b817b457f64afdd7eca6
 .detail-product-left img {
-    width: 400px;
+    width: 300px;
     object-fit: cover;
+    border-top-left-radius:10px ;
+    border-bottom-left-radius: 10px;
 }
-
+.detail-product-right .product-name{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+.detail-product-right .price{
+    font-size: 22px;
+}
+.detail-product-right .saleprice{
+    color:#D8401E;
+    font-size: 20px;
+}
+.detail-product-right .desc{
+    font-size: 14px;
+    margin-top:10px;
+}

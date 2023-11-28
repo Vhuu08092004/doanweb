@@ -350,6 +350,9 @@ header .menu div:hover{
     border-radius: 30px;
     cursor: pointer;
 }
+.content__product-item .Retail-Price{
+    color:red;
+}
 .content__product-item:hover > span{
     display: block;
 }
