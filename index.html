@@ -60,7 +60,7 @@
                     </div>
                     <div class="left-profile__title">
                         <p>Tài khoản của</p>
-                        <h6 id="p_nameTitle"></h6>
+                        <h6 id="p_nameTitle" style="font-size: 18px; margin-top:10px"></h6>
                     </div>
                 </div>
                 <div class="menu-drop">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="content-right">
-                 <div class="right-profile">
+                <div class="right-profile" id="right-profile">
                     <h5>Thông tin tài khoản</h5>
                     <div id="account_info" class="account_info">
                         <div class="profile__form-group">
@@ -101,10 +101,12 @@
                             <button type="button" id="updateProfile">Cập nhật</button>
                             <button type="button" id="logout">Đăng Xuất</button>
                         </div>
-                        <button type="button" style="display: none;" id="manager"><a class="text-light" href="admin.html">Đến Quản Lý</a></button>
+                       
+                    </div>
+                    <button type="button" style="display: none;" id="manager"><a class="text-light" href="admin.html">Đến Quản Lý</a></button>
                 </div>
 
-                <div id="order-info" class="order-info"  >
+                <div id="order-info" class="order-info" style="display: none;" >
                     <h5>Đơn hàng của tôi</h5>
                     <div class="account-order">
                         <table class="table">
@@ -124,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+            
             <span class="closeProfile"><i class="fa-solid fa-xmark"></i></span>
         </div>
        
