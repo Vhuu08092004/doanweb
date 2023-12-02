@@ -45,13 +45,7 @@ const pay = document.querySelector(".pays");
   let product = DATABASE.PRODUCTS;
   let ACCOUNTS = DATABASE.ACCOUNTS;
   let ORDERS = DATABASE.ORDERS;
-  ORDERS.forEach(function(order) {
-    console.log(order);
-   console.log(order.userID);
-      
-  })
   
- 
   userProfile.addEventListener("click",function (){
       body.classList.add("show");
   })
@@ -317,7 +311,7 @@ if(productFilter.length > 6) {
 
     
   const renderListPages= () => {
-    if(params.totalPages == 1) {
+    if(params.totalPages == 1 || params.totalPages == 0) {
       numberPage.innerHTML =''
       var myList = document.querySelector('.content_pagging')
       var listItems = myList.getElementsByTagName('li')
