@@ -72,22 +72,30 @@ var profileInfo=document.getElementById("s_profileInfo"),
     profileInfo.addEventListener("click", () => {
       contentProfile.style.display="block";
       contentOrder.style.display="none";
-      
     });
     profileOrder.addEventListener("click", () => {
-      contentOrder.style.display="block";
       contentProfile.style.display="none";
-      
+      contentOrder.style.display="block";
     });
 
       // profile
-  
+      // ORDERS.forEach(function(order){
+      //   console.log(order);
+      // })
+      for(let i=1;i<ORDERS.length;i++){
+        // console.log(ORDERS[i]);
+        console.log(  ORDERS[i].products)
+        ORDERS[i].products.forEach(function(data){
+          console.log(data.productName);
+        })
+        
+      }
     function actProfileToggle() {
       ACCOUNTS.forEach(function (account) {
         let cookieValue=getCookie("user");
           if (account.email === cookieValue) {
               renderProfileDetail(account);
-             // renderProfileOrder(account.ID);
+             renderProfileOrder(account.ID);
           }
       });
   };
@@ -120,33 +128,33 @@ var profileInfo=document.getElementById("s_profileInfo"),
           alert('Update Thành Công !');
       }
   }
-//   function renderProfileOrder(ID) {
-//     let profileTbody = document.getElementById("profileTbody");
-//     let content = '';
-//     ORDERS.forEach(order => {
-//         if (order.userID === ID) {
-//             let productList = ``;
-//             let total_price = 0;
-//             // order.products.forEach(p => {
-//             //     productList += `
-//             //         ${p.productName} (x${p.quantity})<br>
-//             //     `
-//             //     total_price += p.quantity * p.price
-//             // });
-
-//             content += `
-//             <tr>
-//                 <th scope="row" class="text-info">${order.orderId}</th>
-//                 <td>${order.createDate}</td>
-//                 <td>${productList}</td>
-//                 <td>${formatter.format(total_price)}</td>
-//                 <td class="text-center">${order.status}</td>
-//             </tr>
-//             `;
-//         }
-//     })
-//     profileTbody.innerHTML = content;
-// }
+  function renderProfileOrder(ID) {
+    let profileTbody = document.getElementById("profileTbody");
+    let content = '';
+    for(let i=1;i< ORDERS.length;i++) {
+        let order= ORDERS[i];
+        if (order.userID === ID) {
+            let productList = ``;
+            let total_price = 0;
+            order.products.forEach(p => {
+                productList += `
+                    ${p.productName} (x${p.quantity})<br>
+                `
+                total_price += p.quantity * p.price
+            });
+            content += `
+            <tr>
+                <th scope="row" class="text-info">${order.orderId}</th>
+                <td>${order.createDate}</td>
+                <td>${productList}</td>
+                <td>${total_price}đ</td>
+                <td class="text-center">${order.status}</td>
+            </tr>
+            `;
+        }
+    }
+    profileTbody.innerHTML = content;
+}
       // end profile
 let listCards = [];
 
