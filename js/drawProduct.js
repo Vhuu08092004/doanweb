@@ -45,7 +45,6 @@ const pay = document.querySelector(".pays");
   let product = DATABASE.PRODUCTS;
   let ACCOUNTS = DATABASE.ACCOUNTS;
   let ORDERS = DATABASE.ORDERS;
-  
   userProfile.addEventListener("click",function (){
       body.classList.add("show");
   })
@@ -78,18 +77,7 @@ var profileInfo=document.getElementById("s_profileInfo"),
       contentOrder.style.display="block";
     });
 
-      // profile
-      // ORDERS.forEach(function(order){
-      //   console.log(order);
-      // })
-      for(let i=1;i<ORDERS.length;i++){
-        // console.log(ORDERS[i]);
-        console.log(  ORDERS[i].products)
-        ORDERS[i].products.forEach(function(data){
-          console.log(data.productName);
-        })
-        
-      }
+      // PROFILE
     function actProfileToggle() {
       ACCOUNTS.forEach(function (account) {
         let cookieValue=getCookie("user");
@@ -113,8 +101,7 @@ var profileInfo=document.getElementById("s_profileInfo"),
       p_number.value = account.phoneNumber;
       p_email.value = account.email;
       p_address.value = account.address;
-  
-  
+
       //Update profile
       let updateProfile = document.getElementById('updateProfile');
       updateProfile.addEventListener('click', updateUserProfile);
@@ -155,7 +142,7 @@ var profileInfo=document.getElementById("s_profileInfo"),
     }
     profileTbody.innerHTML = content;
 }
-      // end profile
+      //END PROFILE
 let listCards = [];
 
 let productFilter = product ;
