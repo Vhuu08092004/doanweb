@@ -98,8 +98,9 @@ header .menu div:hover{
 .hiddenProfile{
     position: fixed;
      bottom: 100%;
-    width:90vw;
+    width:1140px;
     height:450px;
+    margin:0 auto;
     background-color: #fff;
     transition: 0.5s;
     -webkit-transition: 0.5s;

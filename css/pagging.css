@@ -5,7 +5,14 @@
     justify-content: center;
     margin:16px 0 24px 0;
 }
-
+.number-pages{
+    display: flex;
+    column-gap: 10px;
+    
+}
+.number-pages li a{
+    color: #000;
+}
 .content_pagging li {
     list-style: none ;
     margin: 0px 5px;
