@@ -48,6 +48,92 @@
     </div>
     
  <!-- end header -->
+ <!-- Profile -->
+
+ <div class="container">
+    <div class="hiddenProfile">
+        <div class="profile">
+            <div class="left-profile">
+                <div >
+                    <div>
+                        <i class="fas fa-user-circle fa-4x mt-1"></i>
+                    </div>
+                    <div class="left-profile__title">
+                        <p>Tài khoản của</p>
+                        <h6 id="p_nameTitle"></h6>
+                    </div>
+                </div>
+                <div class="menu-drop">
+                    <ul>
+                        <li class="liactive" id="s_profileInfo">
+                            <i class="fas fa-user"></i>
+                            Thông tin tài khoản
+                        </li>
+                        <li id="s_profileOrder">
+                            <i class="fas fa-tasks"></i>
+                            Quản lý đơn hàng
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div class="content-right">
+                 <div class="right-profile">
+                    <h5>Thông tin tài khoản</h5>
+                    <div id="account_info" class="account_info">
+                        <div class="profile__form-group">
+                            <label for="p_name" class="form-label">Họ tên</label>
+                            <input type="text" class="form-control" id="p_name">
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="p_number" class="form-label">Số điện thoại</label>            
+                                <input type="text" class="form-control" id="p_number">                 
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="p_email" class="form-label">Email</label>                  
+                                <input type="email" class="form-control" id="p_email">                 
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="p_address" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="p_address">           
+                        </div>
+                        <div class="button-center">
+                            <button type="button" id="updateProfile">Cập nhật</button>
+                            <button type="button" id="logout">Đăng Xuất</button>
+                        </div>
+                        <button type="button" style="display: none;" id="manager"><a class="text-light" href="admin.html">Đến Quản Lý</a></button>
+                </div>
+
+                <div id="order-info" class="order-info"  >
+                    <h5>Đơn hàng của tôi</h5>
+                    <div class="account-order">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Mã đơn hàng</th>
+                                    <th scope="col">Ngày mua</th>
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Trạng thái đơn hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="profileTbody">
+                                <!-- Insert Data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <span class="closeProfile"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+       
+    </div>
+   
+ </div>
+ <!-- end Profile -->
+ 
+
  <!-- search -->
         <div class="container">
             <form class="filter">
