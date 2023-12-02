@@ -1,4 +1,4 @@
- let params = {
+let params = {
   perPages: 6,
   currentPages: 1,
   start :0,
@@ -36,15 +36,34 @@ const pay = document.querySelector(".pays");
       list= document.querySelector(".list"),
       listCard = document.querySelector(".listCard"),
       total = document.querySelector(".total"),
-      quantitys = document.querySelector(".quantity")
+      quantitys = document.querySelector(".quantity"),
+      openSearch = document.querySelector(".search"),
+      closeSearch = document.querySelector(".closesearch"),
+      userProfile=document.querySelector(".userProfile"),
+      closeProfile=document.querySelector(".closeProfile");
   let DATABASE = JSON.parse(localStorage.getItem('DATABASE'))
-
-  let product = DATABASE.PRODUCTS
-     
-    
-
-
-
+  let product = DATABASE.PRODUCTS;
+  let ACCOUNTS = DATABASE.ACCOUNTS;
+  let ORDERS = DATABASE.ORDERS;
+  ORDERS.forEach(function(order) {
+    console.log(order);
+   console.log(order.userID);
+      
+  })
+  
+ 
+  userProfile.addEventListener("click",function (){
+      body.classList.add("show");
+  })
+  closeProfile.addEventListener("click",function (){
+    body.classList.remove("show");
+  });
+  openSearch.addEventListener("click", () => {
+    body.classList.add("opensearch");
+  });
+  closeSearch.addEventListener("click", () => {
+    body.classList.remove("opensearch");
+  });
 openShopping.addEventListener("click", () => {
   body.classList.add("active");
 })
@@ -52,7 +71,89 @@ openShopping.addEventListener("click", () => {
 closeShopping.addEventListener("click", () => {
   body.classList.remove("active")
 })
+var profileInfo=document.getElementById("s_profileInfo"),
+    profileOrder=document.getElementById("s_profileOrder"),
+    contentProfile=document.querySelector(".right-profile"),
+    contentOrder=document.querySelector(".order-info");
+    profileInfo.addEventListener("click", () => {
+      contentProfile.style.display="block";
+      contentOrder.style.display="none";
+      
+    });
+    profileOrder.addEventListener("click", () => {
+      contentOrder.style.display="block";
+      contentProfile.style.display="none";
+      
+    });
 
+      // profile
+  
+    function actProfileToggle() {
+      ACCOUNTS.forEach(function (account) {
+        let cookieValue=getCookie("user");
+          if (account.email === cookieValue) {
+              renderProfileDetail(account);
+             // renderProfileOrder(account.ID);
+          }
+      });
+  };
+   actProfileToggle();
+    function renderProfileDetail(account) {
+    
+      let p_name = document.getElementById('p_name');
+      let p_number = document.getElementById('p_number');
+      let p_email = document.getElementById('p_email');
+      let p_address = document.getElementById('p_address');
+      let p_nameTitle = document.getElementById('p_nameTitle');
+  
+      p_nameTitle.innerText = account.username;
+      p_name.value = account.username;
+      p_number.value = account.phoneNumber;
+      p_email.value = account.email;
+      p_address.value = account.address;
+  
+  
+      //Update profile
+      let updateProfile = document.getElementById('updateProfile');
+      updateProfile.addEventListener('click', updateUserProfile);
+  
+      function updateUserProfile() {
+          account.username = p_name.value;
+          account.phoneNumber = p_number.value;
+          account.email = p_email.value;
+          account.address = p_address.value;
+          localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
+          alert('Update Thành Công !');
+      }
+  }
+//   function renderProfileOrder(ID) {
+//     let profileTbody = document.getElementById("profileTbody");
+//     let content = '';
+//     ORDERS.forEach(order => {
+//         if (order.userID === ID) {
+//             let productList = ``;
+//             let total_price = 0;
+//             // order.products.forEach(p => {
+//             //     productList += `
+//             //         ${p.productName} (x${p.quantity})<br>
+//             //     `
+//             //     total_price += p.quantity * p.price
+//             // });
+
+//             content += `
+//             <tr>
+//                 <th scope="row" class="text-info">${order.orderId}</th>
+//                 <td>${order.createDate}</td>
+//                 <td>${productList}</td>
+//                 <td>${formatter.format(total_price)}</td>
+//                 <td class="text-center">${order.status}</td>
+//             </tr>
+//             `;
+//         }
+//     })
+//     profileTbody.innerHTML = content;
+// }
+      // end profile
 let listCards = [];
 
 let productFilter = product ;
@@ -251,5 +352,4 @@ if(productFilter.length > 6) {
  }
 
  changePages();
-
 
