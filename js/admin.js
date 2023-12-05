@@ -307,10 +307,7 @@ let DATABASE = localStorage.getItem('DATABASE') ? JSON.parse(localStorage.getIte
       "Với chất liệu tốt từ Converse, mẫu mã vừa đơn giản, đẹp mà không gây hại, kích ứng bàn chân của bé. Các gam màu tươi sáng sẽ làm các bé trở nên sành điệu và ngầu hơn.",
     price: 800000,
     saleprice: 400000,
-  },
- 
-  
-  
+  }
 ],
   ACCOUNTS: [
       // Set User Default role ADMIN    
@@ -518,12 +515,13 @@ function actProduct(event) {
   }
   // Delete
   if (ev.matches('#delete')) {
-      confirm('bạn có muốn xóa sản phẩm này không')
-      PRODUCTS = PRODUCTS.filter(product => product.id !== data_code);
-      DATABASE.PRODUCTS = PRODUCTS;
-      localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
-      ev.closest('tr').remove();
-      notificationAction("Xóa Sản Phẩm Thành Công.", "#38e867");
+      if(confirm('bạn có muốn xóa sản phẩm này không')){
+        PRODUCTS = PRODUCTS.filter(product => product.id !== data_code);
+        DATABASE.PRODUCTS = PRODUCTS;
+        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
+        ev.closest('tr').remove();
+        notificationAction("Xóa Sản Phẩm Thành Công.", "#38e867");
+      }
   }
 }
 

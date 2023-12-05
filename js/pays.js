@@ -44,7 +44,7 @@ let database= JSON.parse(localStorage.getItem('DATABASE')).ACCOUNTS;
                         if(data.email == condition) {
                             order = {
                                         orderId: generateUUIDV4(),
-                                        userID: data.ID,  
+                                        userID: data.ID,
                                         customerInfo: {
                                             customerName: data.username,
                                             customerNumber:data.phoneNumber,
