@@ -45,6 +45,7 @@ const pay = document.querySelector(".pays");
   let product = DATABASE.PRODUCTS;
   let ACCOUNTS = DATABASE.ACCOUNTS;
   let ORDERS = DATABASE.ORDERS;
+  
   userProfile.addEventListener("click",function (){
       body.classList.add("show");
   })
@@ -77,7 +78,18 @@ var profileInfo=document.getElementById("s_profileInfo"),
       contentOrder.style.display="block";
     });
 
-      // PROFILE
+      // profile
+      // ORDERS.forEach(function(order){
+      //   console.log(order);
+      // })
+      // for(let i=1;i<ORDERS.length;i++){
+      //   // console.log(ORDERS[i]);
+      //   console.log(  ORDERS[i].products)
+      //   ORDERS[i].products.forEach(function(data){
+      //     console.log(data.productName);
+      //   })
+        
+      // }
     function actProfileToggle() {
       ACCOUNTS.forEach(function (account) {
         let cookieValue=getCookie("user");
@@ -101,7 +113,8 @@ var profileInfo=document.getElementById("s_profileInfo"),
       p_number.value = account.phoneNumber;
       p_email.value = account.email;
       p_address.value = account.address;
-
+  
+  
       //Update profile
       let updateProfile = document.getElementById('updateProfile');
       updateProfile.addEventListener('click', updateUserProfile);
@@ -142,8 +155,8 @@ var profileInfo=document.getElementById("s_profileInfo"),
     }
     profileTbody.innerHTML = content;
 }
-      //END PROFILE
-let listCards = [];
+      // end profile
+
 
 let productFilter = product ;
 params.totalPages = Math.ceil(productFilter.length / params.perPages) ;
@@ -168,29 +181,46 @@ params.totalPages = Math.ceil(productFilter.length / params.perPages) ;
   }
 drawProduct(product);
 
+
+if(localStorage.getItem('cart')){
+  var cart = JSON.parse(localStorage.getItem('cart'))
+  var listCards = cart.filter(function(item) {
+    return item !== null;
+});
+} else {
+  var listCards = []
+
+}
+
+
+// let listCards = [] ;
+
+  
 const addToCard = key => {
   if(listCards[key]!= null) {
     listCards[key].quantity += 1;
+    localStorage.setItem(`otherProduct`,JSON.stringify( listCards[key].quantity))
   }
   
   if(listCards[key] == null) {
       listCards[key] = JSON.parse(JSON.stringify(product[key]));
-      // console.log(listCards);
-      listCards[key].quantity = 1;
-      // console.log(listCards[key].quantity);
-      
+      listCards[key].quantity = 1; 
   }
   reloadCard()
 }
+
+
 
 const reloadCard = () => {
   listCard.innerHTML = "";
   let count = 0;
   let totalPrice= 0;
   let pays = [];
+  console.log(listCards)
   listCards.forEach((value, key) => {
+    localStorage.setItem('cart' , JSON.stringify(listCards))
     let products = {
-                 code: value.id,
+                  code: value.id,
                   productName: value.title,                                    
                   price: value.price,
                   image: value.thumbnail,                                    
@@ -222,6 +252,8 @@ const reloadCard = () => {
   })
 }
 
+reloadCard()
+
 pay.addEventListener('click' , () => {
   listCards = []
 })
@@ -231,6 +263,7 @@ const changeQuantity = (key, quantity) => {
       delete listCards[key];
       total.innerText = 0;
       quantitys.innerHTML = 0
+      localStorage.setItem('cart' ,[])
   }
   else {
       listCards[key].quantity = quantity;
@@ -341,4 +374,3 @@ if(productFilter.length > 6) {
  }
 
  changePages();
-
