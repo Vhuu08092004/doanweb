@@ -307,7 +307,10 @@ let DATABASE = localStorage.getItem('DATABASE') ? JSON.parse(localStorage.getIte
       "Với chất liệu tốt từ Converse, mẫu mã vừa đơn giản, đẹp mà không gây hại, kích ứng bàn chân của bé. Các gam màu tươi sáng sẽ làm các bé trở nên sành điệu và ngầu hơn.",
     price: 800000,
     saleprice: 400000,
-  }
+  },
+ 
+  
+  
 ],
   ACCOUNTS: [
       // Set User Default role ADMIN    
@@ -385,15 +388,39 @@ function renderProduct(product) {
 // Add New Product
 let add_new = document.getElementById('add_new');
 add_new.addEventListener('click', actAddProduct);
+function checkPrice(str) {
+  var regex = /\d/;
+  if (regex.test(str)) {
+    return true; 
+  } else {
+    return false; 
+  }
+}
+price.addEventListener('blur', (e) => {
+    if (!checkPrice(e.target.value)){
+      notificationAction("vui lòng nhập số" , "#e61212")
+      price.value = ''
+    } 
+})
+
+saleprice.addEventListener('blur', (e) => {
+    if (!checkPrice(e.target.value)){
+      notificationAction("vui lòng nhập số" , "#e61212")
+      saleprice.value = ''
+    }
+})
 
 function actAddProduct() {
+      
+    // var regex = /\d/;
+    // return regex.test(value) ? undefined :  message || 'Trường này phải là email';
   let product = {
       id: id.value,
       title: title.value,
       thumbnail: thumbnail.value,
       type: type.selectedIndex == 0 ? "Kid" : type.selectedIndex == 1 ? "Chuck 1970s" : "Classic", 
       description: description.value,
-      price: price.value,
+      price: price.value ,
       saleprice: saleprice.value
   }
   if ((validateForm(product) === true) && (checkExistProductCode(product.id) === false)) {
@@ -498,8 +525,9 @@ function actProduct(event) {
       add_new.style.display = "none";
       update.style.display = "inline-block";
       id.disabled = true;
-      document.documentElement.scrollTop = 0;
   }
+
+  
   // Detail
   if (ev.matches('#detail')) {
       let product_detail = document.getElementById('product-detail');
@@ -515,13 +543,12 @@ function actProduct(event) {
   }
   // Delete
   if (ev.matches('#delete')) {
-      if(confirm('bạn có muốn xóa sản phẩm này không')){
-        PRODUCTS = PRODUCTS.filter(product => product.id !== data_code);
-        DATABASE.PRODUCTS = PRODUCTS;
-        localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
-        ev.closest('tr').remove();
-        notificationAction("Xóa Sản Phẩm Thành Công.", "#38e867");
-      }
+      confirm('bạn có muốn xóa sản phẩm này không')
+      PRODUCTS = PRODUCTS.filter(product => product.id !== data_code);
+      DATABASE.PRODUCTS = PRODUCTS;
+      localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
+      ev.closest('tr').remove();
+      notificationAction("Xóa Sản Phẩm Thành Công.", "#38e867");
   }
 }
 
@@ -642,6 +669,7 @@ function disableSelectedOption() {
 const orderTime = document.querySelector(".order-time")
 
 
+
 var ngayHienTai = new Date();
 var ngay = ngayHienTai.getDate();
 var thang = ngayHienTai.getMonth() + 1; 
@@ -678,9 +706,10 @@ orderTime.addEventListener("blur" , (e) => {
   })
   if(ordersdate != ''){
     renderOrder(ordersdate)
-  } else{
-    renderOrder(ORDERS)
   }
+  // else{
+  //   renderOrder(ORDERS)
+  // }
 
 })
 function renderOrder(e) {
@@ -841,3 +870,7 @@ function actUpdateOrderStatus() {
 }
 
 // Update new commit
+
+
+let innerUpdate = document.querySelector(".innerUpdate");
+
