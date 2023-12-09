@@ -39,7 +39,6 @@ const pay = document.querySelector(".pays");
       total = document.querySelector(".total"),
       quantitys = document.querySelector(".quantity"),
       closeSearch = document.querySelector(".closesearch"),
-      // userProfile=document.querySelector(".userProfile"),
       closeProfile=document.querySelector(".closeProfile"),
       openMenu = document.querySelector(".header-menu"),
       header = document.querySelector(".header"),
@@ -60,10 +59,6 @@ const pay = document.querySelector(".pays");
   catogoryDesc.addEventListener("click",function(){
       document.querySelector(".show__catogogy-item").classList.toggle("show_item");
   });
-
-  // userProfile.addEventListener("click",function (){
-  //     body.classList.add("show");
-  // });
   function userProfile(){
     body.classList.add("show");
   }
