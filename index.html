@@ -17,28 +17,66 @@
    
     <!-- header -->
     <div class="container">
-        <header>
+        <header class="header">
             <h1>Shopping</h1>
             <div class="menu">
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Tìm kiếm</span>
+                <form class="search-basic" >
+                    <div class="item">
+                        <label for=""></label>
+                        <input type="text" name="name" placeholder="Từ khóa n">                    
+                    </div>
+                    <div class="item submit" >
+                        <button class="header-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <div class="catogory">
+                        <span>Catogory <i class="fa-solid fa-caret-down"></i></span>
+                        <div class="catogogy-item">
+                            <div  onclick="catogorySearch('Kid')">Kid</div>
+                            <div  onclick="catogorySearch('Chuck 1970')">CHUCK 1970</div>
+                            <div  onclick="catogorySearch('Classic')">Classic</div>
+                        </div>
+                    </div>
+                </form>
+                <div class=" search" onclick="openSearch()">
+                    <i class="fa-solid fa-filter"></i>
+                    <span>Bộ lọc</span>
                 </div>
                 <div class="account">
                     <i class="fa-solid fa-user"></i>
                     <span>Tài Khoản</span>
                     <div class="user"></div>
                 </div>
-               
                 <div class="shopping">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span class="quantity">0</span>
                 </div>
             </div>
-           
-           
+            <div class="header-menu" id="menu"><i class="fa-solid fa-bars"></i></div>
+            <!-- dropdown -->
+            <div class="dropdown-menu">
+                <div class="dropdown-inner">
+                    <div class="show__catogory">
+                        <span class="catogory-desc">Catogory <i class="fa-solid fa-caret-down"></i></span>
+                        <div class="show__catogogy-item">
+                            <div  onclick="catogorySearch('Kid')">Kid</div>
+                            <div  onclick="catogorySearch('Chuck 1970')">CHUCK 1970</div>
+                            <div  onclick="catogorySearch('Classic')">Classic</div>
+                        </div>
+                    </div>
+                    <div class=" search2" onclick="openSearch()">
+                        <i class="fa-solid fa-filter"></i>
+                        <span>Bộ lọc</span>
+                    </div>
+                    <div class="show_account" onclick="account()">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài Khoản</span>
+                        <div class="user-mobile"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end dropdown -->
         </header>
-
+        
         <div class="list"></div>
     </div>
     <div class="container">
@@ -100,7 +138,6 @@
                         <div class="button-center">
                             <button type="button" id="updateProfile">Cập nhật</button>
                             <button type="button" id="logout">Đăng Xuất</button>
-                            <button type="button" style="display: none;" id="manager"><a class="text-light" href="admin.html">Đến Quản Lý</a></button>
                         </div>
                        
                     </div>
@@ -177,13 +214,13 @@
         <div class="card">
             <h1>Card</h1>
             <ul class="listCard">
-
+                
             </ul>
             <div class="checkOut">
                 <div class="pays">Thanh toán</div>
-                <div class="total">0</div>
-                <div class="closeShopping">Close</div>
+                <div class="total">0</div>   
             </div>
+            <span class="closeShopping" ><i class="fa-solid fa-xmark"></i></div>
         </div>
  <!-- end card -->
    
@@ -271,7 +308,7 @@
           
     </footer>
      <!-- end footer -->
-    <script src="./js/product.js"></script>
+
     <script  src="./js/user.js"></script>
     <script src="./js/drawProduct.js"></script>
     <script src="./js/detail.js"></script>
