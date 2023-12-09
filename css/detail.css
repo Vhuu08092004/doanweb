@@ -1,10 +1,29 @@
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .detail-innerwrap{
-    width:95%;
     margin: 0 auto 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 20px;
     display: flex;
     padding:10px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 200;
+    top:150px;
+    width:85%;
+    transition: all 0.7s ease-in-out;
+}
+.detail-innerwrap .closeDetail{
+    position: absolute;
+    top:10px;
+    right:10px;
+    font-size: 22px;
+    cursor: pointer;
 }
 .detail-product-left img {
     width: 300px;
