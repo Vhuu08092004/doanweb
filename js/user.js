@@ -16,6 +16,7 @@ function getCookie(cname) {
     document.cookie = `${cname}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
   }
   const user = document.querySelector(".user");
+  const accountMobile= document.querySelector(".user-mobile");
   let newHTML;
   
   const conditonUser = getCookie("token");
@@ -29,22 +30,23 @@ function getCookie(cname) {
   };
   
   const Logout = () => {
-    // deleteCookie("token");
-    deleteCookie("user");
+     deleteCookie("token");
+     deleteCookie("user");
     window.location.reload();
   };
   // let data = JSON.parse(localStorage.getItem())
   if (conditonUser) {
     newHTML = `
-          <i class="fa-regular fa-user"></i>
+        
+          <i class="fa-regular fa-user" id="userMobile"></i>
           <span>Chào khách hàng</span>
-  
           <ul user-menu>
-              <li class="userProfile">Thông tin khách hàng</li>
-              <li onclick="Logout()">Đăng Xuất</li>        
+            <li class="userProfile" onclick="userProfile()">Thông tin khách hàng</li>
+            <li onclick="Logout()">Đăng Xuất</li>        
           </ul>
           `;
     user.innerHTML = newHTML;
+    accountMobile.innerHTML = newHTML;
   } else {
     newHTML = `
               <div onclick = "Login()">Đăng nhập</div>
@@ -52,5 +54,8 @@ function getCookie(cname) {
           `;
   
     user.innerHTML = newHTML;
+    accountMobile.innerHTML = newHTML;
   }
-  
+  function account(){
+    accountMobile.style.display="block";
+  }

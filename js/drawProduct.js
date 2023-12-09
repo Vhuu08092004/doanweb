@@ -29,6 +29,7 @@ const pay = document.querySelector(".pays");
  let buttonSearch =document.querySelector("#button-search");
  let filter = document.querySelector(".filter");
  let content = document.querySelector(".content__product");
+ let searchBasic=document.querySelector(".search-basic");
 
  const openShopping = document.querySelector(".shopping"),
       closeShopping = document.querySelector(".closeShopping"),
@@ -37,34 +38,52 @@ const pay = document.querySelector(".pays");
       listCard = document.querySelector(".listCard"),
       total = document.querySelector(".total"),
       quantitys = document.querySelector(".quantity"),
-      openSearch = document.querySelector(".search"),
       closeSearch = document.querySelector(".closesearch"),
-      userProfile=document.querySelector(".userProfile"),
-      closeProfile=document.querySelector(".closeProfile");
+      // userProfile=document.querySelector(".userProfile"),
+      closeProfile=document.querySelector(".closeProfile"),
+      openMenu = document.querySelector(".header-menu"),
+      header = document.querySelector(".header"),
+      catogoryDesc=document.querySelector(".catogory-desc"),
+      showAccount=document.querySelector(".show-account");
+
+
+      
+  
   let DATABASE = JSON.parse(localStorage.getItem('DATABASE'))
   let product = DATABASE.PRODUCTS;
   let ACCOUNTS = DATABASE.ACCOUNTS;
   let ORDERS = DATABASE.ORDERS;
-  
-  userProfile.addEventListener("click",function (){
-      body.classList.add("show");
-  })
+  //  thao tac su kien
+  openMenu.addEventListener("click", function(){
+      header.classList.toggle("show-menu")
+  });
+  catogoryDesc.addEventListener("click",function(){
+      document.querySelector(".show__catogogy-item").classList.toggle("show_item");
+  });
+
+  // userProfile.addEventListener("click",function (){
+  //     body.classList.add("show");
+  // });
+  function userProfile(){
+    body.classList.add("show");
+  }
   closeProfile.addEventListener("click",function (){
     body.classList.remove("show");
   });
-  openSearch.addEventListener("click", () => {
+  function openSearch(){
     body.classList.add("opensearch");
-  });
+  };
+
   closeSearch.addEventListener("click", () => {
     body.classList.remove("opensearch");
   });
 openShopping.addEventListener("click", () => {
   body.classList.add("active");
 })
-
 closeShopping.addEventListener("click", () => {
   body.classList.remove("active")
 })
+  // end thao tac su kien
 var profileInfo=document.getElementById("s_profileInfo"),
     profileOrder=document.getElementById("s_profileOrder"),
     contentProfile=document.querySelector(".right-profile"),
@@ -78,18 +97,7 @@ var profileInfo=document.getElementById("s_profileInfo"),
       contentOrder.style.display="block";
     });
 
-      // profile
-      // ORDERS.forEach(function(order){
-      //   console.log(order);
-      // })
-      // for(let i=1;i<ORDERS.length;i++){
-      //   // console.log(ORDERS[i]);
-      //   console.log(  ORDERS[i].products)
-      //   ORDERS[i].products.forEach(function(data){
-      //     console.log(data.productName);
-      //   })
-        
-      // }
+   
     function actProfileToggle() {
       ACCOUNTS.forEach(function (account) {
         let cookieValue=getCookie("user");
@@ -216,7 +224,6 @@ const reloadCard = () => {
   let count = 0;
   let totalPrice= 0;
   let pays = [];
-  console.log(listCards)
   listCards.forEach((value, key) => {
     localStorage.setItem('cart' , JSON.stringify(listCards))
     let products = {
@@ -271,7 +278,41 @@ const changeQuantity = (key, quantity) => {
   }
   reloadCard()
 }
+// Search
+    function catogorySearch(value){
 
+      productFilter =product.filter(item => {
+      
+        if(value != ''){
+          if(item.type != value){
+              return false;
+          }
+        };
+        return true;
+    })
+    drawProduct(productFilter);
+    params.totalPages = Math.ceil(productFilter.length / params.perPages);
+    renderListPages();
+  }
+
+searchBasic.addEventListener('submit',function(event) {
+  event.preventDefault();
+
+  let valueFilter = event.target.elements;
+ 
+  productFilter =product.filter(item => {
+   
+    if(valueFilter.name.value != ''){
+      if(!item.title.toUpperCase().includes(valueFilter.name.value.toUpperCase())){
+          return false;
+      }
+  };
+  return true;
+  })
+  drawProduct(productFilter);
+  params.totalPages = Math.ceil(productFilter.length / params.perPages);
+  renderListPages();
+})
 
 filter.addEventListener('submit', function(event){
   event.preventDefault();
@@ -308,7 +349,7 @@ filter.addEventListener('submit', function(event){
   params.totalPages = Math.ceil(productFilter.length / params.perPages);
   renderListPages();
 })
-
+// end Search
 
 function getCurrentPage(currentPage){
   params.currentPages = currentPage;

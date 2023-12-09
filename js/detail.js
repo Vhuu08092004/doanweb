@@ -6,7 +6,8 @@ const btnDetail = (key) => {
   let arrayHTML;
   for (let i = 0; i < detail.length; i++) {
     if (detail[i].id == key) {
-      arrayHTML = `  <div class="container">
+      arrayHTML = `  
+      <div class="container">
       <div class="row">
         <div class="detail-innerwrap">
             <div class="detail-product-left">
@@ -18,6 +19,7 @@ const btnDetail = (key) => {
                 <div class="saleprice">Sale Price: ${detail[i].saleprice}</div>
                 <div class="desc">${detail[i].description}</div>
                 <button onclick = "addToCard(${detail[i].id})">Add To Card</button>
+                <span class="closeDetail" onclick="closeDetail()"><i class="fa-solid fa-xmark"></i></div>
             </div>
           </div>
       </div>
@@ -25,6 +27,12 @@ const btnDetail = (key) => {
               `;
     }
   }
-  console.log(arrayHTML);
+ 
   document.querySelector(".detail-product").innerHTML = arrayHTML;
+  document.querySelector(".detail-product").style.display ="block";
 };
+var detailProduct=document.querySelector(".detail-product");
+function closeDetail(){
+  detailProduct.style.display="none";
+}
+
