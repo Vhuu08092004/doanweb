@@ -410,14 +410,16 @@ header .menu div:hover{
 .active .card{
     left: calc(100% - 500px);
 }
-.card h1{
-    color: #560bad;
+.card h1 {
+    background-color: rgb(248, 192, 82);
     font-weight: 300;
     margin: 0;
-    padding: 0 20px;
+    padding: 20px;
     height: 80px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .card .checkOut{
@@ -430,9 +432,15 @@ header .menu div:hover{
 }
 .card .closeShopping{
     position: absolute;
-    top:5px;
-    left:5px;
-    font-size: 23px;
+    top: 0px;
+    left:0px;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.card .closeShopping:hover {
+    background-color: red;
 }
 .card .checkOut div{
     background-color: #560bad;

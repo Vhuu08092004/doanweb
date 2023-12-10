@@ -237,8 +237,7 @@ const reloadCard = () => {
           newDiv.innerHTML = `
               <div><img src = "${value.thumbnail}"></div>
               <div class = "cardTitle">${value.title}</div>
-              <div class = "cardPrice">${product[key].price * listCards[key].quantity}</div>
-
+              <div class="cardPrice">${(product[key].price * listCards[key].quantity).toLocaleString()} VNĐ</div>
               <div>
                   <button style = "background-color:#560bad;" class = "cardButton" onclick = "changeQuantity(${key}, ${value.quantity - 1})">-</button>
                   <div class = "count">${value.quantity}</div>
@@ -249,7 +248,7 @@ const reloadCard = () => {
         pays.push(products)
       }
       localStorage.setItem(`otherProduct`,JSON.stringify(pays))
-      total.innerText = totalPrice.toLocaleString();
+      total.innerText = totalPrice.toLocaleString() + ' VNĐ';
       quantitys.innerText = count;
   })
 }
