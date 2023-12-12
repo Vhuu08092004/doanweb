@@ -366,7 +366,7 @@ function loadProductManager(PRODUCTS) {
 function renderProduct(product) {
   let contents = `
       <tr>
-          <th scope="row">${product.id}</th>
+          <th scope="row" id="${product.id}">${product.id}</th>
           <td>
               <img width="100" height="100" src="${product.thumbnail}">
           </td>
@@ -412,8 +412,7 @@ saleprice.addEventListener('blur', (e) => {
 
 function actAddProduct() {
       
-    // var regex = /\d/;
-    // return regex.test(value) ? undefined :  message || 'Trường này phải là email';
+  
   let product = {
       id: id.value,
       title: title.value,
@@ -525,6 +524,7 @@ function actProduct(event) {
       add_new.style.display = "none";
       update.style.display = "inline-block";
       id.disabled = true;
+      document.documentElement.scrollTop = 0;
   }
 
   
@@ -571,8 +571,15 @@ function actUpdate() {
               product.image = images.slice(12, images.length);
           }
           localStorage.setItem('DATABASE', JSON.stringify(DATABASE));
-          location.reload();
+          if(!product.price || !product.saleprice) {
+            alert('Vui lòng nhập giá và giá khuyến mãi!')
+          } else {
+            location.reload();
           notificationAction("Cập Nhật Sản Phẩm Thành Công.", "#1216e6");
+          const element = document.getElementById(`${product.id}`);
+          element.scrollIntoView();
+          }
+          
       }
   })
 }
@@ -675,43 +682,43 @@ var ngay = ngayHienTai.getDate();
 var thang = ngayHienTai.getMonth() + 1; 
 var nam = ngayHienTai.getFullYear();
 var yesterday = new Date(Date.now() - 86400000); // that is: 24 * 60 * 60 * 1000
-orderTime.addEventListener("blur" , (e) => {
-  let valueDate = [];
-  if (e.target.options.selectedIndex == 0) {
-      valueDate = `${ngay}/${thang}/${nam}`     
-  } else if (e.target.options.selectedIndex == 1) {
-    valueDate = `${yesterday.getDate()}/${yesterday.getMonth() + 1}/${yesterday.getFullYear()}`
-  } else if (e.target.options.selectedIndex == 2){
-    let i = 1
-    let week = new Date(Date.now());
-    while(i < 8 ) {
-      week = new Date(week - 86400000)
-      i++;
-      valueDate.push(`${week.getDate()}/${week.getMonth() + 1}/${week.getFullYear()}`) 
-    }
-  } 
-  let ordersdate = [];
-  ORDERS.filter(order => {
-    if(order.createDate == valueDate)
-    {
-      ordersdate.push(order)  ;
-    } else {
-      for(let i = 0 ; i < valueDate.length ; i++){
-        if(order.createDate == valueDate[i]){
-          ordersdate.push(order)
-          break
-        }
-      }
-    }
-  })
-  if(ordersdate != ''){
-    renderOrder(ordersdate)
-  }
-  // else{
-  //   renderOrder(ORDERS)
-  // }
+// orderTime.addEventListener("blur" , (e) => {
+//   let valueDate = [];
+//   if (e.target.options.selectedIndex == 0) {
+//       valueDate = `${ngay}/${thang}/${nam}`     
+//   } else if (e.target.options.selectedIndex == 1) {
+//     valueDate = `${yesterday.getDate()}/${yesterday.getMonth() + 1}/${yesterday.getFullYear()}`
+//   } else if (e.target.options.selectedIndex == 2){
+//     let i = 1
+//     let week = new Date(Date.now());
+//     while(i < 8 ) {
+//       week = new Date(week - 86400000)
+//       i++;
+//       valueDate.push(`${week.getDate()}/${week.getMonth() + 1}/${week.getFullYear()}`) 
+//     }
+//   } 
+//   let ordersdate = [];
+//   ORDERS.filter(order => {
+//     if(order.createDate == valueDate)
+//     {
+//       ordersdate.push(order)  ;
+//     } else {
+//       for(let i = 0 ; i < valueDate.length ; i++){
+//         if(order.createDate == valueDate[i]){
+//           ordersdate.push(order)
+//           break
+//         }
+//       }
+//     }
+//   })
+//   if(ordersdate != ''){
+//     renderOrder(ordersdate)
+//   }
+//   // else{
+//   //   renderOrder(ORDERS)
+//   // }
 
-})
+// })
 function renderOrder(e) {
   let contents = '';
   e.filter(order => {
