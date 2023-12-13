@@ -406,6 +406,7 @@ header .menu div:hover{
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
     z-index: 9999;
+   
 }
 .active .card{
     left: calc(100% - 500px);
@@ -415,7 +416,7 @@ header .menu div:hover{
     font-weight: 300;
     margin: 0;
     padding: 20px;
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -428,7 +429,7 @@ header .menu div:hover{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap:10px;
+    gap:5px;
 }
 .card .closeShopping{
     position: absolute;
@@ -457,6 +458,10 @@ header .menu div:hover{
 .card .checkOut div:nth-child(2) {
     background-color: #1c1f25;
     color: #efefef;
+}
+.listCard{
+    overflow: auto;
+    max-height:400px;
 }
 .container .list {
     display: grid;

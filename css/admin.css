@@ -25,3 +25,9 @@ body {
 .order-manager {
     display: none;
 }
+.closeInfo i{
+    width:20px;
+    height:20px;
+}
+/* .modal-backdrop{
+    /* background-color: red; } */
